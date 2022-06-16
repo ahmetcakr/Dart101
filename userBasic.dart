@@ -1,4 +1,6 @@
 void main() {
+  // LESSON 01
+
   // müşterinin adini tut
   // müşterinin parasini ögren
   // müsteriye merhaba deyip parasını söyle.

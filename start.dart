@@ -1,4 +1,6 @@
 void main() {
+  // LESSON 01
+
   // void main() çalışacak kodların bulunduğu alandır
   // Bu kod ekranda mesajımı gösterir.
   // ctrl+alt+n  çalıştır
