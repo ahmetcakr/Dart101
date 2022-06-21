@@ -50,7 +50,7 @@ double ortalama(int vize, int finall) {
   return vize * 0.4 + finall * 0.6;
 }
 
-// optional function
+// optional functions
 
 double ortalamaOptional(int vize, {int finall = 0}) {
   return vize * 0.4 + finall;
