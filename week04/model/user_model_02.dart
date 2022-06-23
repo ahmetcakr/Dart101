@@ -41,3 +41,11 @@ class NewUser3 {
 
   NewUser3(this.name, this._money, {required String id, this.age, this.city}) {}
 }
+
+// EXTENSİON
+
+extension NewUser3Controll on NewUser2 {
+  void ControlName() {
+    print(name); // sınıfın içerisindeki özelliğe erişebiliyorum
+  }
+}
