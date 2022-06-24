@@ -42,7 +42,25 @@ void main() {
   print(userMoney1 + userMoney2);
 
   // musteri tekrardan diyor ki id'si aynı olan musteriler aynı kişi olmak zorunda. Farklı kişiler aynı id'yi kullanamaz.
-}
+
+  print(userMoney1.toString());
+  print(userMoney1 == userMoney2);
+
+  // diğer bankadan bir modul aldık bunu ekleyip müsterinin parasını sorgular mıısn ?
+  // MIXIN KULLANIMI
+  // constructorsız sınıf gibilerdr. Sadece işini yapıp geri döndürür.
+
+  // msuteri adamın parasına 10 tl ekle geri döndür ? (Cascade Notation)
+  // musteri id 1 yap ve musteri adını veli yap
+  //userMoney1.money += 10; X
+
+  userMoney1
+    ..money += 10
+    ..name = 'veli'
+    ..id = '1';
+
+  print(userMoney1);
+} // main
 
 class _User {
   final String name;
@@ -63,9 +81,11 @@ class _User {
   }
 }
 
-class Bank {
-  final int money;
-  final String id;
+class Bank with BankMixin {
+  // with bu class'a dahil et gibidir.
+  int money;
+  String id;
+  String? name;
   Bank(this.money, this.id);
 
 // operatör atamak  // artık yukarıdaki referanslar arası toplama çalışacak
@@ -73,8 +93,26 @@ class Bank {
     return money + newBank.money;
   }
 
+  void updateName(String name) {
+    this.name = name;
+  }
+
+  @override
+  void sayBankHello() {
+    calculateMoney(money);
+  }
+
+  @override
   bool operator ==(Object object) {
     //object kullanılması her şey gelebilir anlamını taşır.
     return object is Bank && object.id == id;
+  }
+}
+
+mixin BankMixin {
+  void sayBankHello() {} // bunu kullanacağımız classta da doldurabilirz.
+
+  void calculateMoney(int money) {
+    print(money);
   }
 }
