@@ -15,14 +15,27 @@ void main() {
 
   // benim elimde mercedes var mı ? (singleWhere)
 
+  // şu yeni gelen arabaya var demiştin bu kaçıncı sırada söyler misin ?  // indexOf
+
+  // ben yeni araba aldım, ekler misin şunu sana zahmet // add
+
+  // bana araabalarımı küçükten büyüğe doğru sıralar mıısn ? // sort
+  // sortlar geriye int döndürür ve sayılarda otomatik olarak çıkar
+  // fakat metin indeksli şeylerde override etmemiz gerekir
+
+  // bbir listeyi diğerine dahil etmek içim kullanılır // expand
+
+  // bu son ekleneni silelim ve
+  // bmw olan ve 30 dan düşükleri silelim.
+
   // array oluşturma
   final carItems = [
     CarModel(
         category: CarModels.bmw, name: 'x5', money: 165, isSecondHand: false),
-    CarModel(category: CarModels.toyota, name: 'y6', money: 16),
+    CarModel(category: CarModels.toyota, name: 'y6', money: 36),
     CarModel(
         category: CarModels.yamaha, name: 'd3', money: 14, isSecondHand: false),
-    CarModel(category: CarModels.toyota, name: 'r1', money: 15),
+    CarModel(category: CarModels.toyota, name: 'r1', money: 45),
     CarModel(
         category: CarModels.bmw, name: 'x4', money: 154, isSecondHand: false)
   ];
@@ -71,18 +84,60 @@ void main() {
     print(
         'Abi bu işlem ağır oldu bir daha sorma :) '); // finally kısmı her koşulda çalışır.
   }
+
+  final index = carItems.indexOf(newCar);
+  print('Yeni arabanın sırası $index');
+  final _mercedes =
+      CarModel(category: CarModels.mercedes, name: 'poossat', money: 61);
+  carItems.add(_mercedes);
+
+  carItems.sort((first, second) =>
+      second.money.compareTo(first.money)); // küçükten büyüğe olan bu
+
+  // carItems.sort((first, second) => first.money.compareTo(second.money)); // büyükten küçüğe olan bu
+  print(carItems);
+
+  final users = carItems.expand((element) => element.users).toList();
+
+  // calculateToUser(carItems);
+  calculateToUser(List.of(carItems));
+
+  carItems.remove(_mercedes);
+  print(carItems);
+
+  carItems.removeWhere(
+      (element) => element.category == CarModels.bmw || element.money < 30);
+  print(carItems);
 } // main
 
+void calculateToUser(List<CarModel> items) {
+  // itemleri düzelt bmw olanları yamaha yap
+
+  final newItems = items.map((CarModel e) {
+    if (e.category == CarModels.bmw) {
+      e.category = CarModels.yamaha;
+    }
+    if (e.isSecondHand) {
+      e.isSecondHand = true;
+    }
+    return e;
+  }).toList();
+  print(newItems);
+}
+
 class CarModel {
-  final CarModels category;
+  CarModels category;
   final String name;
   final double money;
+
+  List<String> users;
   String? city;
   bool isSecondHand;
   CarModel({
     required this.category,
     required this.name,
     required this.money,
+    this.users = const [],
     this.city,
     this.isSecondHand = true,
   });
