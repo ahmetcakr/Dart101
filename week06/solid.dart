@@ -79,7 +79,7 @@ class MongoDB extends IDatabase {
 // Interface parçalanması
 // Interface Segregation Prinsible (ISP)
 
-// ISP diyor ki bu classı böyle yapma, parçala şunu
+// ISP diyor ki bu classı böyle yapma, parçala şunu öyle çalışalım
 /* 
 abstract class IUserOperation {
   void write();
@@ -106,9 +106,7 @@ abstract class ILanguage {
 
 class UserLocation extends IUserLocation {
   @override
-  void Location() {
-    // TODO: implement Location
-  }
+  void Location() {}
 }
 // ... gibi kullanılır
 

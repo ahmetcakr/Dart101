@@ -1,3 +1,5 @@
+// Async / Sync
+
 // Dart dili single track çalışır default olarak
 // Main track üzerinde işler gider.
 // işi giden buradan çıkar

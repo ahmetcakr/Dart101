@@ -1,4 +1,5 @@
-// çok biçimlilik
+// çok biçimlilik / Polymorphism
+
 // bir türün bir başka tür gibi davranabilme ve bu tür gibi kullanılabilme özelliği olarak anlamlandırılır.
 // bir yazılımda sürekli if else kullanılmasının önüne geçer
 
@@ -10,7 +11,7 @@ void main() {
   user.SayName();
 }
 
-// Class tanımlamaları
+// Class tanımlamaları;
 
 abstract class IUser {
   final String name;
